@@ -34,6 +34,7 @@ class TweetsController < ApplicationController
     if @tweet.update(tweet_params)
     else
       render 'edit'
+    end
   end
 
   def show
