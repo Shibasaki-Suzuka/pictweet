@@ -14,7 +14,11 @@ class TweetsController < ApplicationController
   end
 
   def create
-    Tweet.create(tweet_params)
+    @tweet = Tweet.create(tweet_params)
+    if @tweet.save      
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -26,8 +30,10 @@ class TweetsController < ApplicationController
   end
 
   def update
-    tweet = Tweet.find(params[:id])
-    tweet.update(tweet_params)
+    @tweet = Tweet.find(params[:id])
+    if @tweet.update(tweet_params)
+    else
+      render 'edit'
   end
 
   def show
